@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "babel src -w -d dist | nodemon dist",
+    "dev": "babel src -w -d dist & nodemon dist",
     "build": "babel src -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build && mocha --recursive ./dist/test/",
     "flow:check": "flow check",
     "flow:deps": "flow-typed install"
   },
@@ -18,14 +18,18 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-flow": "^7.0.0",
     "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "eslint": "^5.11.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-flowtype": "^3.2.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-mocha": "^5.2.0",
     "eslint-plugin-react": "^7.12.1",
     "flow-bin": "^0.89.0",
     "flow-typed": "^2.5.1",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.9"
   },
   "dependencies": {

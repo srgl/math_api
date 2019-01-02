@@ -4,7 +4,7 @@ import express from 'express';
 import type { $Application } from 'express';
 import * as bodyParser from 'body-parser';
 import routes from './routes';
-import { errorHandler } from './middlewares';
+import { errorHandler, notFound } from './middlewares';
 
 class App {
   express: $Application;
@@ -13,6 +13,7 @@ class App {
     this.express = express();
     this.express.use(bodyParser.json());
     this.express.use(routes);
+    this.express.use(notFound);
     this.express.use(errorHandler);
   }
 }

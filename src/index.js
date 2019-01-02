@@ -1,7 +1,5 @@
 // @flow
 
-import * as http from 'http';
-import App from './app';
+import app from './app';
 
-const server = http.createServer(App);
-server.listen(3000);
+app.listen(3000);

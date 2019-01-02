@@ -12,6 +12,9 @@ export default function errorHandler(error: Error,
   } else if (error instanceof ValidationError) {
     res.status(400);
     res.json({ error: 'validation_error', details: error.errors });
+  } else if (error instanceof SyntaxError) {
+    res.status(400);
+    res.json({ error: 'syntax_error' });
   } else {
     res.status(500);
     res.json({ error: 'internal_error' });

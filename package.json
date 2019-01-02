@@ -29,6 +29,7 @@
     "nodemon": "^1.18.9"
   },
   "dependencies": {
+    "ajv": "^6.6.2",
     "body-parser": "^1.18.3",
     "express": "^4.16.4"
   }

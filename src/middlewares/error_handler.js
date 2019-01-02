@@ -10,9 +10,8 @@ export default function errorHandler(error: Error,
     res.status(404);
     res.json({ error: 'not_found' });
   } else if (error instanceof ValidationError) {
-    const validationError = (error: ValidationError);
     res.status(400);
-    res.json({ error: 'validation_failed', details: validationError.errors });
+    res.json({ error: 'validation_error', details: error.errors });
   } else {
     res.status(500);
     res.json({ error: 'internal_error' });

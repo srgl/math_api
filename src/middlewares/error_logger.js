@@ -5,6 +5,6 @@ import logger from '../utils/logger';
 
 export default function errorLogger(error: Error,
   req: $Request, res: $Response, next: NextFunction) {
-  logger.error('Request failure', error);
+  logger.error('Request failure', { message: error.message });
   next(error);
 }

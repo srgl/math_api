@@ -13,7 +13,7 @@ export function validateBody(schema: string) {
   return (req: $Request, res: $Response, next: NextFunction) => {
     const valid = ajv.validate(schema, req.body);
     if (!valid) throw new ValidationError(ajv.errors);
-    return next();
+    next();
   };
 }
 
@@ -26,6 +26,6 @@ export function validateQueryString(schema: string) {
     });
     const valid = ajv.validate(schema, data);
     if (!valid) throw new ValidationError(ajv.errors);
-    return next();
+    next();
   };
 }

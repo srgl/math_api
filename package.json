@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist",
     "dev": "babel src -w -d dist & nodemon dist",
     "build": "babel src -d dist",
-    "test": "npm run build && mocha --recursive ./dist/test/",
+    "test": "mocha --recursive ./dist/test/",
     "flow:check": "flow check",
     "flow:deps": "flow-typed install",
     "postinstall": "npm run flow:deps"

@@ -1,10 +1,15 @@
 // @flow
+import fs from 'fs';
 import winston from 'winston';
+import PGTransport from './pg_transport';
 
 class Logger {
   logger: any
 
-  constructor() {
+  async init() {
+    if (!fs.existsSync('logs')) fs.mkdirSync('logs');
+    const pgTransport = new PGTransport();
+    await pgTransport.init();
     this.logger = winston.createLogger({
       level: 'info',
       format: winston.format.combine(
@@ -14,6 +19,7 @@ class Logger {
       transports: [
         new winston.transports.Console({}),
         new winston.transports.File({ filename: 'logs/api.log' }),
+        pgTransport,
       ],
     });
   }

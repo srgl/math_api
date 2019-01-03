@@ -3,7 +3,15 @@ services:
   server:
     build: { context: ., target: development}
     command: npm run dev
+    depends_on:
+      - db
     volumes:
       - .:/app
     ports:
       - 3000:3000
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+  db:
+    image: postgres:11-alpine

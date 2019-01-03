@@ -1,9 +1,8 @@
 // @flow
-import fs from 'fs';
 import app from './app';
+import logger from './utils/logger';
 
-if (!fs.existsSync('logs')) {
-  fs.mkdirSync('logs');
-}
-
-app.listen(3000);
+(async () => {
+  await logger.init();
+  app.listen(3000);
+})();

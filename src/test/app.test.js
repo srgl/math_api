@@ -1,8 +1,10 @@
 // @flow
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
+import sinon from 'sinon';
 import Ajv from 'ajv';
 import app from '../app';
+import logger from '../utils/logger';
 
 chai.use(chaiHttp);
 const ajv = new Ajv();
@@ -29,6 +31,12 @@ const sqrtResponse = {
 };
 
 describe('Math API', () => {
+  before(() => {
+    sinon.stub(logger, 'log');
+  });
+  after(() => {
+    logger.log.restore();
+  });
   describe('/div', () => {
     it('return correct division result', async () => {
       // $FlowFixMe

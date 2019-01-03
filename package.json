@@ -30,7 +30,8 @@
     "flow-bin": "^0.89.0",
     "flow-typed": "^2.5.1",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "sinon": "^7.2.2"
   },
   "dependencies": {
     "ajv": "^6.6.2",

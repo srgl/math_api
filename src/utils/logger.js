@@ -2,7 +2,7 @@
 import winston from 'winston';
 
 class Logger {
-  logger: $winstonLogger<$winstonNpmLogLevels>
+  logger: any
 
   constructor() {
     this.logger = winston.createLogger({
@@ -18,12 +18,16 @@ class Logger {
     });
   }
 
+  log(level: string, message: string, data: Object) {
+    this.logger.log({ level, message, data });
+  }
+
   info(message: string, data: Object) {
-    this.logger.info(message, { data });
+    this.log('info', message, data);
   }
 
   error(message: string, data: Object) {
-    this.logger.error(message, { data });
+    this.log('error', message, data);
   }
 }
 

@@ -4,7 +4,8 @@ import type { $Application } from 'express';
 import * as bodyParser from 'body-parser';
 import routes from './routes';
 import {
-  errorHandler, notFound, requestLogger, errorLogger,
+  errorHandler, notFound, requestLogger,
+  errorLogger, queryStringConverter,
 } from './middlewares';
 
 class App {
@@ -14,6 +15,7 @@ class App {
     this.express = express();
     this.express.use(requestLogger);
     this.express.use(bodyParser.json());
+    this.express.use(queryStringConverter);
     this.express.use(routes);
     this.express.use(notFound);
     this.express.use(errorLogger);

@@ -24,7 +24,7 @@ class Logger {
     });
   }
 
-  log(level: $Keys<$winstonNpmLogLevels>, message: string, data: Object) {
+  log(level: $Keys<$winstonNpmLogLevels>, message: string, data: {[string]: any}) {
     const info: $winstonInfo<$winstonNpmLogLevels> = {
       level,
       message,
@@ -33,11 +33,11 @@ class Logger {
     this.logger.log(info);
   }
 
-  info(message: string, data: Object) {
+  info(message: string, data: {[string]: any}) {
     this.log('info', message, data);
   }
 
-  error(message: string, data: Object) {
+  error(message: string, data: {[string]: any}) {
     this.log('error', message, data);
   }
 }

@@ -8,7 +8,7 @@ class Logger {
 
   async init() {
     if (!fs.existsSync('logs')) fs.mkdirSync('logs');
-    const pgTransport = new PGTransport();
+    const pgTransport: PGTransport = new PGTransport();
     await pgTransport.init();
     this.logger = winston.createLogger({
       level: 'info',

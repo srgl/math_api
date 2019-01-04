@@ -5,6 +5,13 @@ import pgp from 'pg-promise';
 export default class PGTransport extends Transport {
   db: pgpConnection
 
+  table: string
+
+  constructor(table: string = 'logs') {
+    super();
+    this.table = table;
+  }
+
   async init() {
     this.db = pgp()({
       host: 'db',
@@ -29,7 +36,7 @@ export default class PGTransport extends Transport {
 
   async createSchema() {
     await this.db.none(`
-      CREATE TABLE IF NOT EXISTS logs (
+      CREATE TABLE IF NOT EXISTS ${this.table} (
         id bigserial primary key,
         timestamp timestamp,
         level varchar(8),
@@ -40,7 +47,7 @@ export default class PGTransport extends Transport {
   }
 
   async log(info: Object, callback: Function) {
-    await this.db.none(`insert into logs (timestamp, level, message, data)
+    await this.db.none(`insert into ${this.table} (timestamp, level, message, data)
       values ($(timestamp), $(level), $(message), $(data))`, info);
     callback();
   }

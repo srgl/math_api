@@ -12,8 +12,8 @@ router.get('/div', validateQueryString('div'), (req: $Request, res: $Response) =
 });
 
 router.post('/sqrt', validateBody('sqrt'), (req: $Request, res: $Response) => {
-  const { data } = (req.body: Object);
-  const result = data.map(n => Math.sqrt(n));
+  const nums: Array<number> = (req.body: Object).data;
+  const result = nums.map(n => Math.sqrt(n));
   res.json({ result });
 });
 

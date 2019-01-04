@@ -46,7 +46,7 @@ export default class PGTransport extends Transport {
     `);
   }
 
-  async log(info: Object, callback: Function) {
+  async log(info: $winstonInfo<$winstonNpmLogLevels>, callback: () => void) {
     await this.db.none(`insert into ${this.table} (timestamp, level, message, data)
       values ($(timestamp), $(level), $(message), $(data))`, info);
     callback();

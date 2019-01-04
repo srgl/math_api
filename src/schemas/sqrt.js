@@ -1,3 +1,4 @@
+// @flow
 export default {
   $id: 'sqrt',
   type: 'object',

@@ -1,3 +1,4 @@
+// @flow
 export default {
   $id: 'div',
   type: 'object',

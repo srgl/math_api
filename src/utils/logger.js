@@ -4,7 +4,7 @@ import winston from 'winston';
 import PGTransport from './pg_transport';
 
 class Logger {
-  logger: any
+  logger: $winstonLogger<$winstonNpmLogLevels>
 
   async init() {
     if (!fs.existsSync('logs')) fs.mkdirSync('logs');
@@ -24,8 +24,13 @@ class Logger {
     });
   }
 
-  log(level: string, message: string, data: Object) {
-    this.logger.log({ level, message, data });
+  log(level: $Keys<$winstonNpmLogLevels>, message: string, data: Object) {
+    const info: $winstonInfo<$winstonNpmLogLevels> = {
+      level,
+      message,
+      data,
+    };
+    this.logger.log(info);
   }
 
   info(message: string, data: Object) {

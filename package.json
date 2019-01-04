@@ -10,6 +10,7 @@
     "test": "mocha --recursive ./dist/test/",
     "flow:check": "flow check",
     "flow:deps": "flow-typed install",
+    "flow:cov": "flow-coverage-report -i 'src/**/*.js'",
     "postinstall": "npm run flow:deps"
   },
   "author": "",
@@ -30,6 +31,7 @@
     "eslint-plugin-mocha": "^5.2.0",
     "eslint-plugin-react": "^7.12.1",
     "flow-bin": "^0.89.0",
+    "flow-coverage-report": "^0.6.1",
     "flow-typed": "^2.5.1",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.9",
